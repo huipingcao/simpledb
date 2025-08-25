@@ -162,7 +162,8 @@ public class parser {
                     throw new ParsingException(e);
                 }
                 if (ftyp == Type.INT_TYPE)
-                     f = new IntField(new Integer(compValue).intValue());
+                     //f = new IntField(new Integer(compValue).intValue()); //deprecated
+                     f = new IntField(Integer.parseInt(compValue)); //Cao updated in 2025/08
                 else
                     f = new StringField(compValue, Type.STRING_LEN);
 
@@ -445,7 +446,8 @@ public class parser {
                     if (td.getType(i) != Type.INT_TYPE) {
                         throw new ParsingException("Value " + zc.getValue() + " is not an integer.");
                     }
-                    IntField f= new IntField(new Integer(zc.getValue()));
+                    //IntField f= new IntField(new Integer(zc.getValue())); //deprecated
+                    IntField f = new IntField(Integer.parseInt(zc.getValue())); //Cao updated in 2025/08
                     t.setField(i,f);
                 } else if(zc.getType() == ZConstant.STRING) {
                     if (td.getType(i) != Type.STRING_TYPE) {
